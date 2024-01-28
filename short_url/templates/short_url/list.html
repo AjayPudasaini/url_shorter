@@ -1,0 +1,55 @@
+{% extends "short_url/base.html" %}
+{% load static %}
+
+{% block url_content %}
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+          
+          <div class="d-flex justify-content-between">
+            <div class="">
+                Your URLs
+            </div>
+            <div class="">
+                <a href="{% url "short_url:url_create" %}">Create URL</a> 
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Original URL</th>
+                          <th scope="col">Shorted URL</th>
+                          <th scope="col">Click Count</th>
+                          <th scope="col">Created Date</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for url in urls %}
+
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ url.original_url }}</td>
+                            <td><a href=" {% url "short_url:redirect_original_url" url.short_key %} " target="_blank"> {{ url.short_key }} </a> </td>
+                            <td>{{ url.click_count }}</td>
+                            <td>{{ url.created_at }}</td>
+                            <td><a href="{% url "short_url:delete_shorted_url" url.short_key %}">Delete</a></td>
+                            <td><a href="{% url "short_url:update_shorted_url" url.short_key %}">Update</a></td>
+                        </tr>
+
+                        {% endfor %}
+                        
+                       
+                      </tbody>
+                </table>
+            </div>
+
+        </div>
+      </div>
+</div>
+{% endblock url_content %}
