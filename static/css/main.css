@@ -1,3 +1,6 @@
-*{
-    background-color: aquamarine;
+body{
+    background-color: rgb(206, 201, 201);
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
 }
