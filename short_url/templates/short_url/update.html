@@ -1,0 +1,28 @@
+{% extends "short_url/base.html" %}
+{% load static %}
+
+{% block url_content %}
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+          Your Long URL
+        </div>
+        <div class="card-body">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+
+                    <label for="long_url" class="form-label">Long Url</label>
+                    <br>
+                    <span>Your Previous URL: {{ shortened_url.original_url }}</span>
+                    <input type="text" class="form-control" id="long_url" name="long_url" placeholder="Enter your long_url">
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Update URL</button>
+                  </div>
+      
+            </form>
+        </div>
+      </div>
+</div>
+{% endblock url_content %}

@@ -42,9 +42,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # third party packages
+    'crispy_forms',
+    'crispy_bootstrap4',
+
     # local apps
     'user.apps.UserConfig',
+    'short_url.apps.ShortUrlConfig',
+
+
 ]
+
+AUTH_USER_MODEL = "user.User"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -136,3 +146,11 @@ MEDIA_URL = "/media/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+LOGIN_URL = "user:user_login"
+LOGIN_REDIRECT_URL = 'short_url:url_lists'

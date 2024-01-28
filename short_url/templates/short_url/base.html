@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid p-0">
+    <div class="container p-3">
+        <div class="d-flex justify-content-between">
+
+            <div class="">
+                <h2><a href="short_url:url_lists">URL Shorter</a></h2>
+            </div>
+
+            <div class="">
+                <a href="{% url "user:user_logout" %}">Log Out</a> 
+            </div>
+
+        </div>
+    </div>
+    {% block url_content %}{% endblock url_content %}
+
+</div>
+
+{% endblock content %}
