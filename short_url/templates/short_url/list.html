@@ -25,7 +25,9 @@
                           <th scope="col">Original URL</th>
                           <th scope="col">Shorted URL</th>
                           <th scope="col">Click Count</th>
+                          <th scope="col">Expiration Date</th>
                           <th scope="col">Created Date</th>
+                          <th scope="col">QR Code</th>
                           <th scope="col">Action</th>
                         </tr>
                       </thead>
@@ -34,10 +36,12 @@
 
                         <tr>
                             <th scope="row">{{ forloop.counter }}</th>
-                            <td>{{ url.original_url }}</td>
+                            <td>{{ url.original_url|truncatechars:50 }}</td>
                             <td><a href=" {% url "short_url:redirect_original_url" url.short_key %} " target="_blank"> {{ url.short_key }} </a> </td>
                             <td>{{ url.click_count }}</td>
+                            <td>{{ url.expiration_date }}</td>
                             <td>{{ url.created_at }}</td>
+                            <td><img src="{{ url.get_qr_image }}" class="img-fluid" alt="qr" style="height:100px;, width:200px;"></td>
                             <td><a href="{% url "short_url:delete_shorted_url" url.short_key %}">Delete</a></td>
                             <td><a href="{% url "short_url:update_shorted_url" url.short_key %}">Update</a></td>
                         </tr>
