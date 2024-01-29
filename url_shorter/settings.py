@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'django.contrib.sites',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -52,6 +53,9 @@ INSTALLED_APPS = [
 
 
 ]
+
+SITE_ID = 1
+
 
 AUTH_USER_MODEL = "user.User"
 
